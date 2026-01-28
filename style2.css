@@ -1,0 +1,58 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #181818;
+    padding: 20px;
+}
+
+/* المعرض */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* كل كرت يتسع حسب الشاشة */
+    gap: 20px;  /* مسافة بين الكروت */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* الصور */
+.container img {
+    width: 100%;        /* يشغل مساحة العمود */
+    height: 400px;      
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 10px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.container img:hover {
+    transform: scale(1.2);   /* يكبر الصورة شويه بدون تغيير العمود */
+    z-index: 10;              /* يطلع فوق الصور الثانية */
+}
+.container:has(img:hover) img:not(:hover) {
+    filter: blur(10px);
+
+}
+
+/* Responsive للأجهزة المتوسطة */
+@media (max-width: 992px){
+    .container img {
+        height: 300px;
+    }
+    .container img:hover {
+        transform: scale(1.2);
+    }
+}
+
+/* Responsive للموبايل */
+@media (max-width: 600px){
+    .container img {
+        height: 200px;
+    }
+    .container img:hover {
+        transform: scale(1.2);
+    }
+}
